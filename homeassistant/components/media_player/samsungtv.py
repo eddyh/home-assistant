@@ -18,7 +18,7 @@ from homeassistant.components.media_player import (
     MediaPlayerDevice)
 from homeassistant.const import (
     CONF_HOST, CONF_MAC, CONF_NAME, CONF_PORT, CONF_TIMEOUT, STATE_OFF,
-    STATE_ON)
+    STATE_ON, STATE_UNKNOWN)
 import homeassistant.helpers.config_validation as cv
 from homeassistant.util import dt as dt_util
 
@@ -105,7 +105,7 @@ class SamsungTVDevice(MediaPlayerDevice):
         self._muted = False
         # Assume that the TV is in Play mode
         self._playing = True
-        self._state = None
+        self._state = STATE_UNKNOWN
         self._remote = None
         # Mark the end of a shutdown command (need to wait 15 seconds before
         # sending the next command to avoid turning the TV back ON).
